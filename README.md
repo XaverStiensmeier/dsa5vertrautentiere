@@ -6,3 +6,10 @@ Wenn du mitarbeiten möchtest, melde dich doch gerne einmal bei mir :)
 Besonders würde ich mich über Unterstützung im Bereich hyperref pdfform https://ctan.org/pkg/hyperref?lang=en freuen
 1. Generelle Möglichkeiten
 2. Form Berechnung (calculate; JavaScript)
+
+Für eine mögliche Weiterführung des Projekts: Python
+1. PDFminer
+2. Datenbanken
+3. FLASK
+
+Generell sei angemerkt, dass ich selbst nur wenig Zeit habe.
