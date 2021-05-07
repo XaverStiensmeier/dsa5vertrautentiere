@@ -7,7 +7,7 @@ Besonders würde ich mich über Unterstützung im Bereich hyperref pdfform https
 1. Generelle Möglichkeiten
 2. Form Berechnung (calculate; JavaScript)
 
-Für eine mögliche Weiterführung des Projekts: Python
+Für eine mögliche Weiterführung des Projekts: Python (die unter einem sehr großen IF steht)
 1. PDFminer
 2. Datenbanken
 3. FLASK
