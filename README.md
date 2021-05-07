@@ -2,7 +2,7 @@
 DSA5 Vertrautentiere
 
 ## Nutzen
-Ihr könnt einfach das PDF herunterladen und befüllen. Anschließend könnt ihr es befüllen. Das PDF berechent für euch nichts. Es lässt sich aber sehr leicht mit selbstgeschriebenen Programmen ansteuern.
+Ihr könnt einfach das PDF herunterladen und befüllen, damit ihr eine Übersicht für euren Spieltisch habt. Das PDF berechent für euch nichts. Es lässt sich aber sehr leicht mit selbstgeschriebenen Programmen ansteuern. Die Berechnung kann also an ein Programm ausgelagert werden.
 
 ## Schnuppern
 LaTeX
