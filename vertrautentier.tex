@@ -1,41 +1,48 @@
 \documentclass{article}
 %[showframe]
 \usepackage[
-        a4paper,% other options: a3paper, a5paper, etc
+        a4paper,
         left=4cm,
         right=4cm,
         top=3cm,
         bottom=0.5cm,
-        % use vmargin=2cm to make vertical margins equal to 2cm.
-        % us  hmargin=3cm to make horizontal margins equal to 3cm.
-        % use margin=3cm to make all margins  equal to 3cm.
+        %showframe %use this option in order to show the "frame" it will become more clear if you use it and helps you to understand LaTeX-Geometry
 ]{geometry}
 \setlength{\voffset}{-0.75in}
 \setlength{\headsep}{5pt}
 \usepackage{amssymb}
 \usepackage{array}
 \usepackage{tabularx}
-\usepackage[pdfstartview=FitH]{hyperref}
+\usepackage[pdfstartview=FitH]{hyperref} %this is the most important package here. I advice you to read its documentation https://ctan.org/pkg/hyperref?lang=en
 \usepackage{xcolor}
 \usepackage[ngerman]{babel}
 \usepackage{wasysym}
-\hypersetup{
+\hypersetup{ % this is just a small setup that sets the colors to black. The default is very ugly. Remove it to check it out :)
   pdfauthor   = {Xaver Stiensmeier},
-  pdfkeywords = {Xaver Stiensmeier, Gründungsmanagement, Fragebogen},
-  pdftitle    = {Fragebogen - Gründungsmanagement},
+  pdfkeywords = {Xaver Stiensmeier, Vertrautentiere},
+  pdftitle    = {Vertrautentiere},
   colorlinks,
   citecolor=black,
   filecolor=black,
   linkcolor=black,
   urlcolor=black
 }
-%\renewcommand\LayoutCheckField[2]{#1#2} % <------------
-%\fboxsep=0pt % <------------
+%\renewcommand\LayoutCheckField[2]{#1#2}
+%\fboxsep=0pt
+% Some new form elements are coming...
+% name of the form element is always the last parameter
 \newcommand{\tickbox}[1]{\rule[6pt]{0pt}{6pt}\hbox{\CheckBox[print,name=#1, width=0.7em, height=0.7em, bordercolor=0 0 0, borderwidth=0.6]{}}}
+% a simple CheckBox param1 is the name. Adding it to the hbox has a very positive effect! Check it out by removing the box (don't forget to remove the curly bracket at the end as well
 \newcommand{\tb}[2]{\rule[6pt]{0pt}{6pt}\hbox{\TextField[name=#2,height=0.35cm, backgroundcolor={lightgray}, width=#1, bordercolor=0 0 0, borderwidth=0]{}}}
+% param1 is the width, param2 is the name.
 \newcommand{\tbf}[3]{\rule[6pt]{0pt}{6pt}\hbox{\TextField[name=#3,height=0.35cm, backgroundcolor={lightgray}, width=#1, charsize=#2, bordercolor=0 0 0, borderwidth=0]{}}}
+% param1 is the width, param2 is charsize in pt, param3 is the name
 \newcommand{\info}[1]{\rule[6pt]{0pt}{6pt}\hbox{\TextField[name=#1,height=0.35cm, backgroundcolor={lightgray}, width=1.7cm, bordercolor=0 0 0, borderwidth=0]{}}}
+% this is not the most useful command. It's a medium sized tb. param1 is the name
 \newcommand{\eigenschaft}[1]{\rule[6pt]{0pt}{6pt}\hbox{\TextField[name=#1,height=0.35cm, backgroundcolor={lightgray}, width=0.5cm, bordercolor=0 0 0, borderwidth=0]{}}}
+% this is just a small tb. param1 is the name
+
+% The following can be used to automatically calculate pain-threshold. It's not perfect. It uses javascript therefore it doesn't work with many viewers
 %\newcommand{\lp}{\rule[6pt]{0pt}{6pt}\hbox{\TextField[name = number.1, height=0.35cm, backgroundcolor={lightgray}, width=0.5cm, bordercolor=0 0 0, borderwidth=0, format = {
 %               var f = this.getField('number.1');
 %               f.userName = 'first number'
@@ -48,22 +55,22 @@
 %               this.getField('#1').value =
 %                 this.getField('number.1').value*#2;
 %               }]{}}}
-\newcolumntype{S}{>{\centering\arraybackslash}m{1.5em}}
-\renewcommand{\tabularxcolumn}[1]{m{#1}} % redefine 'X' to use 'm'
-\newcommand{\optional[1]}{}
+\newcolumntype{S}{>{\centering\arraybackslash}m{1.5em}} % you probably should read the documentation, but it is definetly not vital here!
+%\renewcommand{\tabularxcolumn}[1]{m{#1}} % redefine 'X' to use 'm'
+\newcommand{\optional}[1]{} % you may ignore this, but you can also think about when or why it might be used ^^
 \begin{document}
-\title{\vspace{-1.5cm}\href{https://ulisses-regelwiki.de/GR_Vertraute.html}{Vertrautentier}\vspace{-1.5cm}}
-\date{}
+\title{\vspace{-1.5cm}\href{https://ulisses-regelwiki.de/GR_Vertraute.html}{Vertrautentier}\vspace{-1.5cm}} % -vspace allows you to one-time reduce certain gaps. Remove it to see the difference
+\date{} % removes the date. Remove to see the difference
 \maketitle
-\thispagestyle{empty}
+\thispagestyle{empty} % removes the page-number. Remove it to see the difference
 \begin{center}
 \TextField[name=fname, height=0.5cm, backgroundcolor={lightgray}, width=5cm, bordercolor=0 0 0, borderwidth=0]{}\hspace{0.3cm}\TextField[name=fap,height=0.4cm, backgroundcolor={lightgray}, width=1cm, bordercolor=0 0 0, borderwidth=0, value=0]{}
 \end{center}
 \begin{Form}
 \noindent
 \makebox[\textwidth]{%
-\begin{tabularx}{1.2\textwidth}{X|S|X|S|X|S|X|S}
-   \textbf{Größe} & \tb{0.65cm}{fsize} & \textbf{Gewicht} & \tb{0.65cm}{fweight} & \textbf{Alter} & \eigenschaft{fage} & \textbf{Geschlecht} & \eigenschaft{sex} \\
+\begin{tabularx}{1.2\textwidth}{X|S|X|S|X|S|X|S} % you might wanna read into tabularx. Not vital but helpful https://ctan.org/pkg/tabularx?lang=en
+   \textbf{Größe} & \tb{0.65cm}{fsize} & \textbf{Gewicht} & \tb{0.65cm}{fweight} & \textbf{Alter} & \eigenschaft{fage} & \textbf{Geschlecht} & \eigenschaft{fsex} \\
 \end{tabularx}%
 }\vspace{0.5cm}
 \makebox[\textwidth]{%
@@ -79,7 +86,7 @@
   \textbf{SK} & \eigenschaft{fspirit} & \textbf{ZK} & \eigenschaft{ftoughness} & \textbf{GS} & \eigenschaft{fmovement} & \textbf{RS} & \eigenschaft{fpro}
 \end{tabularx}%
 }
-\makebox[\textwidth]{%
+\makebox[\textwidth]{%fw
 \begin{tabularx}{1.2\textwidth}{X|X|X|X}
   \hline
   \textbf{Name} & \textbf{Attackewert} & \textbf{Trefferpunkte} & \textbf{Reichweite} \\
@@ -88,7 +95,7 @@
 \end{tabularx}%
 }
 \subsubsection*{\href{https://ulisses-regelwiki.de/vor-und-nachteile.html}{Vorteile/Nachteile}}
-\makebox[\textwidth]{%
+\makebox[\textwidth]{%fvn
 \begin{tabularx}{1.2\textwidth}{X|X|X|X}
   \tbf{3.5cm}{6pt}{fvn1} & \tbf{3.5cm}{6pt}{fvn2} & \tbf{3.5cm}{6pt}{fvn3} & \tbf{3.5cm}{6pt}{fvn4}\\
   \tbf{3.5cm}{6pt}{fvn5} & \tbf{3.5cm}{6pt}{fvn6} & \tbf{3.5cm}{6pt}{fvn7} & \tbf{3.5cm}{6pt}{fvn8}\\
@@ -96,8 +103,8 @@
   \tbf{3.5cm}{6pt}{fvn13} & \tbf{3.5cm}{6pt}{fvn14} & \tbf{3.5cm}{6pt}{fvn15} & \tbf{3.5cm}{6pt}{fvn16}
 \end{tabularx}%
 }
-\subsubsection*{\href{https://ulisses-regelwiki.de/sonderfertigkeiten.html}{Sonderfertigkeiten}}
-\makebox[\textwidth]{%
+\subsubsection*{\href{https://ulisses-regelwiki.de/sonderfertigkeiten.html}{Sonderfertigkeiten}} % one might consider to actually add all skills here
+\makebox[\textwidth]{%fs
 \begin{tabularx}{1.2\textwidth}{X|X|X|X}
   \tbf{3.5cm}{6pt}{fs1} & \tbf{3.5cm}{6pt}{fs2} & \tbf{3.5cm}{6pt}{fs3} & \tbf{3.5cm}{6pt}{fs4}\\
   \tbf{3.5cm}{6pt}{fs5} & \tbf{3.5cm}{6pt}{fs6} & \tbf{3.5cm}{6pt}{fs7} & \tbf{3.5cm}{6pt}{fs8}\\
@@ -106,7 +113,7 @@
 \end{tabularx}%
 }
 \subsubsection*{\href{https://ulisses-regelwiki.de/talentauswahl.html}{Talente}}
-\makebox[\textwidth]{%
+\makebox[\textwidth]{%ft
 \begin{tabularx}{1.2\textwidth}{X|X|X|X}
   \tbf{3.5cm}{6pt}{ft1} & \tbf{3.5cm}{6pt}{ft2} & \tbf{3.5cm}{6pt}{ft3} & \tbf{3.5cm}{6pt}{ft4}\\
   \tbf{3.5cm}{6pt}{ft5} & \tbf{3.5cm}{6pt}{ft6} & \tbf{3.5cm}{6pt}{ft7} & \tbf{3.5cm}{6pt}{ft8}\\
@@ -115,7 +122,7 @@
 \end{tabularx}%
 }
 \subsubsection*{\href{https://ulisses-regelwiki.de/VSF_Vertrautentricks.html}{Vertrautentricks}}
-\makebox[\textwidth]{%
+\makebox[\textwidth]{%fv
 \begin{tabularx}{1.2\textwidth}{XS|XS|XS}
   \textbf{\href{https://ulisses-regelwiki.de/VSF_Diebstahl.html}{Diebstahl}} & \tickbox{fvdiebstahl} & \textbf{\href{https://ulisses-regelwiki.de/VSF_Dingeerspueren.html}{Dinge erspüren}} & \tickbox{fvdingeerspuren} & \textbf{\href{https://ulisses-regelwiki.de/VSF_Einschuechterndes_Bellen.html}{Einschüchterndes Bellen}} & \tickbox{fveinschuchterndesbellen} \\\hline
   \textbf{\href{https://ulisses-regelwiki.de/VSF_ErsterunterGleichen.html}{Erster unter Gleichen}} & \tickbox{fversteruntergleichen} & \textbf{\href{https://ulisses-regelwiki.de/VSF_Fluchbote.html}{Fluchbote}} & \tickbox{fvfluchbote} & \textbf{\href{https://ulisses-regelwiki.de/VSF_Furchtbote.html}{Furchtbote}} & \tickbox{fvfurchtbote} \\\hline
